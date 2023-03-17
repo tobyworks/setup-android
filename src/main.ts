@@ -178,6 +178,11 @@ async function run(): Promise<void> {
   const sdkManager = await installSdkManager()
   core.debug(`sdkmanager installed to: ${sdkManager}`)
   await callSdkManager(sdkManager, '--licenses')
+  await callSdkManager(sdkManager, '--licenses')
+  await callSdkManager(sdkManager, '--licenses')
+  await callSdkManager(sdkManager, '--licenses')
+  await callSdkManager(sdkManager, '--licenses')
+  await callSdkManager(sdkManager, '--licenses')
   await callSdkManager(sdkManager, 'platform-tools')
 
   core.setOutput('ANDROID_COMMANDLINE_TOOLS_VERSION', COMMANDLINE_TOOLS_VERSION)
