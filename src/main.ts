@@ -7,7 +7,7 @@ import * as fse from 'fs-extra'
 import * as os from 'os'
 
 const CMDLINE_TOOLS_VERSION = '7.0'
-const COMMANDLINE_TOOLS_VERSION = '8512546'
+const COMMANDLINE_TOOLS_VERSION = '9477386'
 
 const COMMANDLINE_TOOLS_WIN_URL = `https://dl.google.com/android/repository/commandlinetools-win-${COMMANDLINE_TOOLS_VERSION}_latest.zip`
 const COMMANDLINE_TOOLS_MAC_URL = `https://dl.google.com/android/repository/commandlinetools-mac-${COMMANDLINE_TOOLS_VERSION}_latest.zip`
@@ -33,7 +33,7 @@ function findPreinstalledSdkManager(): {
   isCorrectVersion: boolean
   exePath: string
 } {
-  const result = {isFound: false, isCorrectVersion: false, exePath: ''}
+  const result = { isFound: false, isCorrectVersion: false, exePath: '' }
 
   // First try to find the version defined in CMDLINE_TOOLS_VERSION
   result.exePath = getSdkManagerPath(CMDLINE_TOOLS_VERSION)
@@ -97,7 +97,7 @@ async function callSdkManager(sdkManager: string, arg: string): Promise<void> {
 }
 
 async function installSdkManager(): Promise<string> {
-  fs.mkdirSync(ANDROID_SDK_ROOT, {recursive: true})
+  fs.mkdirSync(ANDROID_SDK_ROOT, { recursive: true })
 
   // touch $ANDROID_SDK_ROOT/repositories.cfg
   fs.closeSync(
@@ -129,7 +129,7 @@ async function installSdkManager(): Promise<string> {
     )
 
     // Create parent directory
-    fs.mkdirSync(path.dirname(desiredLocation), {recursive: true})
+    fs.mkdirSync(path.dirname(desiredLocation), { recursive: true })
 
     // Make sure we don't have leftover target directory (happens sometimes...)
     if (fs.existsSync(desiredLocation)) fse.removeSync(desiredLocation)
@@ -166,7 +166,7 @@ async function run(): Promise<void> {
 
       const newSDKLocation = ANDROID_SDK_ROOT.replace(/\s/gi, '-')
       core.debug(`moving ${ANDROID_SDK_ROOT} to ${newSDKLocation}`)
-      fs.mkdirSync(path.dirname(newSDKLocation), {recursive: true})
+      fs.mkdirSync(path.dirname(newSDKLocation), { recursive: true })
 
       // intentionally using fs.renameSync,
       // because it doesn't move across drives
