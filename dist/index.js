@@ -9801,7 +9801,11 @@ function run() {
         const sdkManager = yield installSdkManager();
         core.debug(`sdkmanager installed to: ${sdkManager}`);
         yield callSdkManager(sdkManager, '--licenses');
-        yield callSdkManager(sdkManager, 'tools');
+        yield callSdkManager(sdkManager, '--licenses');
+        yield callSdkManager(sdkManager, '--licenses');
+        yield callSdkManager(sdkManager, '--licenses');
+        yield callSdkManager(sdkManager, '--licenses');
+        yield callSdkManager(sdkManager, '--licenses');
         yield callSdkManager(sdkManager, 'platform-tools');
         core.setOutput('ANDROID_COMMANDLINE_TOOLS_VERSION', COMMANDLINE_TOOLS_VERSION);
         core.exportVariable('ANDROID_HOME', ANDROID_SDK_ROOT);
